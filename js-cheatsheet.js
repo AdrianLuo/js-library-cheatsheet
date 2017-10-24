@@ -5,16 +5,13 @@
 // - 1.0 SM & LG desktop sticky navigation
 // - 2.0 Swap logo swap with SM & LG desktop with sticky nav
 // - 3.0 Carousel Refresher & Mobile BG Swap
+// - 4.0 Detect Browser, must include bowser.js in header
+// - 5.0 Add tab index to class
 //
 //////////////////////////////////////////////////////////////////
 
 // 0.0 - HTML load, run JS
 $(document).ready(function(){ //insert function });
-
-// Add tab index to class
-$(".class_name").each(function (i) { 
-	$(this).attr('tabindex', i + 1); 
-});
 
 // 1.0 - SM & LG desktop sticky navigation
 var window_width = $(window).width();
@@ -97,4 +94,23 @@ function banner_swap(w_width){
     	$('.slide-2').attr('src', 'images/slider-2.jpg');
     	$('.slide-3').attr('src', 'images/slider-3.jpg');
   	}
-	}
+}
+
+
+// 4.0 - Detect Browser, must include bowser.js in header
+if (bowser.msie && bowser.version <= 6) {
+	alert('Hello China'); // do stuff
+} else if (bowser.firefox){
+	alert('Hello Foxy'); // do stuff
+} else if (bowser.chrome){
+	alert('Hello Silicon Valley'); // do stuff
+} else if (bowser.safari){
+	alert('Hello Apple Fan'); // do stuff
+} else if(bowser.iphone || bowser.android){
+	alert('Hello mobile'); // do stuff
+}
+
+// 5.0 - Add tab index to class
+$(".class_name").each(function (i) { 
+	$(this).attr('tabindex', i + 1); 
+});

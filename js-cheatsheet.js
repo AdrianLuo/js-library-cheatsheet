@@ -4,6 +4,7 @@
 // - 0.0 Initialize JS
 // - 1.0 SM & LG desktop sticky navigation
 // - 2.0 Swap logo swap with SM & LG desktop with sticky nav
+// - 3.0 Carousel Refresher & Mobile BG Swap
 //
 //////////////////////////////////////////////////////////////////
 
@@ -63,3 +64,37 @@ if(body.hasClass('public')){
 		}
 	});
 }
+
+// 3.0 - Bootstrap Carousel Refresher & Mobile BG Swap
+var home_page_banner = $('#carousel-example-generic');
+
+$('.panel-heading').click(function(){
+	if($(this).hasClass('active')){
+		$(this).removeClass('active');
+	}else{
+		$(this).addClass('active');
+	}
+	
+});
+
+if($('body').hasClass('home')){
+	$(window).resize(function(){
+		if(home_page_banner.length){
+			banner_swap($(window).width());
+		}
+	});
+}
+
+banner_swap(window_width);
+
+function banner_swap(w_width){
+	if(w_width <= 991) {
+    	$('.slide-1').attr('src', 'images/slider-1-sm.jpg');
+    	$('.slide-2').attr('src', 'images/slider-2-sm.jpg');
+    	$('.slide-3').attr('src', 'images/slider-3-sm.jpg');
+  	} else if(w_width >= 992) {
+  		$('.slide-1').attr('src', 'images/slider-1.jpg');
+    	$('.slide-2').attr('src', 'images/slider-2.jpg');
+    	$('.slide-3').attr('src', 'images/slider-3.jpg');
+  	}
+	}
